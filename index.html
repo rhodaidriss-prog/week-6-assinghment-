@@ -1,0 +1,395 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpendWise - Budget Dashboard</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="style.css">
+
+</head> <body>
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">S</span>
+            <span>SpendWise</span>
+        </div>
+
+        <nav class="navigation" aria-label="Main navigation">
+
+            <a href="#dashboard" class="nav-item active">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#expenses" class="nav-item">
+                <span>💰</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="#categories" class="nav-item">
+                <span>📁</span>
+                <span>Categories</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Spend smarter.</p>
+            <p>Save better.</p>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content" id="dashboard">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div class="welcome">
+
+                <p class="eyebrow">Overview</p>
+
+                <h1>SpendWise Dashboard</h1>
+
+                <p>
+                    Track your expenses and stay within your budget.
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+                <span class="profile-avatar">SW</span>
+
+                <div>
+                    <strong>Personal Account</strong>
+                    <small>Budget Tracker</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Summary -->
+        <section class="summary">
+
+            <div class="summary-card">
+
+                <div>
+                    <span class="summary-label">
+                        Total Budget
+                    </span>
+
+                    <strong id="budgetDisplay">
+                        KSh 80,000
+                    </strong>
+                </div>
+
+                <span class="summary-icon">💰</span>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div>
+                    <span class="summary-label">
+                        Total Spent
+                    </span>
+
+                    <strong id="expenseDisplay">
+                        KSh 0
+                    </strong>
+                </div>
+
+                <span class="summary-icon">📉</span>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div>
+                    <span class="summary-label">
+                        Remaining
+                    </span>
+
+                    <strong id="remainingDisplay">
+                        KSh 80,000
+                    </strong>
+                </div>
+
+                <span class="summary-icon">🏦</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Budget Form -->
+        <section class="budget-tool">
+
+            <div>
+
+                <p class="eyebrow">
+                    Budget Setup
+                </p>
+
+                <h2>
+                    Set Your Budget
+                </h2>
+
+                <p>
+                    Enter your budget and add expenses below.
+                </p>
+
+            </div>
+
+            <form id="budgetForm" class="budget-form">
+
+                <label for="budgetInput">
+                    Budget (KSh)
+                </label>
+
+                <input
+                    type="number"
+                    id="budgetInput"
+                    min="0"
+                    value="80000"
+                    required
+                >
+
+                <button type="submit">
+                    Set Budget
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Add Expense -->
+        <section class="expense-form-section" id="expenses">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Transactions
+                    </p>
+
+                    <h2>
+                        Add Expense
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <form id="expenseForm" class="expense-form">
+
+                <div class="form-group">
+
+                    <label for="expenseName">
+                        Expense Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="expenseName"
+                        placeholder="e.g. Groceries"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="expenseAmount">
+                        Amount (KSh)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        placeholder="e.g. 2500"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="expenseCategory">
+                        Category
+                    </label>
+
+                    <select id="expenseCategory" required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Food">
+                            Food
+                        </option>
+
+                        <option value="Transport">
+                            Transport
+                        </option>
+
+                        <option value="Rent">
+                            Rent
+                        </option>
+
+                        <option value="Entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="Savings">
+                            Savings
+                        </option>
+
+                        <option value="Utilities">
+                            Utilities
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit" class="primary-button">
+                    + Add Expense
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Feedback -->
+        <div
+            id="budgetMessage"
+            class="budget-message"
+            role="status"
+            aria-live="polite"
+        >
+            Add your first expense to get started.
+        </div>
+
+
+        <!-- Expense Records -->
+        <section class="expense-list-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Expense Records
+                    </p>
+
+                    <h2>
+                        Recent Expenses
+                    </h2>
+
+                </div>
+
+                <button
+                    id="clearExpensesButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Clear All
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Expense</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="expenseTableBody">
+
+                        <tr class="empty-row">
+
+                            <td colspan="3">
+                                No expenses added yet.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Category Cards -->
+        <section class="categories" id="categories">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Spending
+                    </p>
+
+                    <h2>
+                        Category Overview
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-grid" id="categoryCards">
+
+                <!-- JavaScript generates category cards here -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body> </html>

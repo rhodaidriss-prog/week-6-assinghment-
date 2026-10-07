@@ -1,0 +1,396 @@
+SpendWise Interactive Budget Dashboard
+Project Description
+
+SpendWise is a personal budgeting dashboard that helps users track their budget and expenses.
+
+This week, the project was improved by adding JavaScript interactivity. Users can now set a budget, add multiple expenses, view expense records, clear expenses, and receive feedback about their current financial situation.
+
+The application now uses JavaScript to make decisions, store multiple records, process data using loops, update the webpage dynamically, and respond to user interactions.
+
+Project Files
+
+The project contains:
+
+index.html – Provides the structure of the SpendWise dashboard.
+
+style.css – Provides the visual design, layout, colors, forms, table, responsive design, and dark theme.
+
+script.js – Contains the interactive JavaScript functionality.
+
+README.md – Documents the project and explains the JavaScript concepts used.
+
+Improvements Made This Week
+
+Several improvements were made to SpendWise.
+
+1. Interactive Budget
+
+Users can enter their own budget using the budget form.
+
+2. Add Expenses
+
+Users can add expense records by entering:
+
+Expense name
+
+Amount
+
+Category
+
+3. Expense Array
+
+Multiple expense records are stored in a JavaScript array.
+
+4. Automatic Calculations
+
+SpendWise automatically calculates:
+
+Total budget
+
+Total expenses
+
+Remaining balance
+
+5. Budget Feedback
+
+The application gives different messages depending on the user's financial situation.
+
+For example:
+
+The user is within budget.
+
+Less than 20% of the budget remains.
+
+The entire budget has been used.
+
+The user is over budget.
+
+6. Dynamic Dashboard
+
+The expense table and category cards are automatically updated whenever expense data changes.
+
+7. Clear Expenses
+
+Users can remove all expense records using the Clear All button.
+
+JavaScript Concepts Implemented
+1. Conditional Statements
+
+Conditional statements are used to make decisions based on the user's financial information.
+
+The application uses if, else if, and else.
+
+Example:
+
+if (remaining < 0) {
+
+    budgetMessage.textContent =
+        "You are over budget.";
+
+}
+
+else if (remaining === 0) {
+
+    budgetMessage.textContent =
+        "You have used your entire budget.";
+
+}
+
+else {
+
+    budgetMessage.textContent =
+        "You are within your budget.";
+
+}
+
+
+These conditions allow SpendWise to provide appropriate feedback.
+
+If the remaining balance is negative, the application tells the user that they are over budget.
+
+If the remaining balance is zero, the application tells the user that they have used their entire budget.
+
+Otherwise, the application tells the user that they are still within budget.
+
+The application also checks whether the remaining balance is below 20% of the budget and displays a warning.
+
+2. Arrays
+
+Arrays are used to store multiple expense records.
+
+Example:
+
+let expenses = [
+    {
+        name: "Groceries",
+        amount: 7500,
+        category: "Food"
+    },
+
+    {
+        name: "Matatu",
+        amount: 2500,
+        category: "Transport"
+    },
+
+    {
+        name: "Rent",
+        amount: 18000,
+        category: "Rent"
+    }
+];
+
+
+Each expense is stored as an object containing:
+
+name
+
+amount
+
+category
+
+New expenses are added to the array using:
+
+expenses.push(newExpense);
+
+
+This allows the application to manage multiple expense records instead of using separate variables for every expense.
+
+3. Loops
+
+Loops are used to process the expense records.
+
+The project uses forEach() to go through every item in the expenses array.
+
+Example:
+
+expenses.forEach(function(expense) {
+
+    total = total + expense.amount;
+
+});
+
+
+This loop calculates the total amount spent.
+
+Loops are also used to:
+
+Display expense records.
+
+Calculate category totals.
+
+Count expenses in each category.
+
+Generate category cards.
+
+This makes the application efficient because the same code can process any number of expense records.
+
+4. DOM Manipulation
+
+DOM manipulation is used to update the webpage using JavaScript.
+
+For example:
+
+expenseDisplay.textContent =
+    "KSh " + totalExpenses.toLocaleString();
+
+
+This changes the total expenses shown on the dashboard.
+
+The expense table is also created dynamically.
+
+Example:
+
+const row =
+    document.createElement("tr");
+
+row.innerHTML = `
+    <td>${expense.name}</td>
+    <td>${expense.category}</td>
+    <td>KSh ${expense.amount.toLocaleString()}</td>
+`;
+
+expenseTableBody.appendChild(row);
+
+
+This means that users can see their expense records directly on the webpage without refreshing the page.
+
+5. Event Handling
+
+Event listeners are used to respond to user actions.
+
+The budget form uses a submit event:
+
+budgetForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        // Process budget
+
+    }
+);
+
+
+The expense form also uses a submit event:
+
+expenseForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        // Add expense
+
+    }
+);
+
+
+The Clear All button uses a click event:
+
+clearExpensesButton.addEventListener(
+    "click",
+    function() {
+
+        // Clear expenses
+
+    }
+);
+
+
+These events allow the application to respond immediately when the user interacts with it.
+
+6. User Interaction Flow
+
+The application follows this process:
+
+User enters budget
+        ↓
+JavaScript receives the input
+        ↓
+Budget variable is updated
+        ↓
+User adds an expense
+        ↓
+Expense object is created
+        ↓
+Expense is added to the array
+        ↓
+JavaScript loops through the array
+        ↓
+Total expenses are calculated
+        ↓
+Remaining balance is calculated
+        ↓
+Conditional statements evaluate the balance
+        ↓
+DOM is updated
+        ↓
+User sees the updated dashboard
+
+7. Challenges Encountered
+
+One challenge was keeping the dashboard information synchronized after a user added a new expense.
+
+If the expense was added to the array but the HTML was not updated, the new expense would not appear immediately.
+
+This was resolved by creating a reusable function called:
+
+updateDashboard();
+
+
+This function calls:
+
+updateSummary();
+displayExpenses();
+displayCategoryCards();
+
+
+Therefore, whenever the expense data changes, the application can refresh all relevant information on the page.
+
+Another challenge was calculating expenses by category.
+
+This was solved by using loops and conditional statements to check the category of every expense.
+
+For example:
+
+if (expense.category === categoryName) {
+
+    total = total + expense.amount;
+
+}
+
+
+This allows SpendWise to calculate the total amount spent on Food, Transport, Rent, Entertainment, Savings, and Utilities.
+
+8. Testing
+
+The application was tested by performing the following actions:
+
+Set Budget
+
+A budget of:
+
+KSh 80,000
+
+
+was entered.
+
+Add Expense
+
+The following expenses were tested:
+
+Groceries - KSh 7,500 - Food
+Matatu - KSh 2,500 - Transport
+Rent - KSh 18,000 - Rent
+
+
+The dashboard automatically calculated the total expenses.
+
+Total Expenses = KSh 28,000
+
+
+The remaining balance became:
+
+KSh 80,000 - KSh 28,000 = KSh 52,000
+
+Over-Budget Test
+
+An expense amount large enough to exceed the budget was also tested.
+
+When expenses became greater than the budget, SpendWise displayed an over-budget warning.
+
+Clear Expenses
+
+The Clear All button was tested and successfully removed all expense records after confirmation.
+
+Conclusion
+
+SpendWise is now an interactive JavaScript budgeting application.
+
+The project demonstrates:
+
+Conditional statements
+
+Arrays
+
+Objects
+
+Loops
+
+Functions
+
+DOM manipulation
+
+Event listeners
+
+User input
+
+Dynamic content
+
+Budget calculations
+
+Input validation
+
+These features provide the JavaScript foundation needed for future SpendWise functionality.
